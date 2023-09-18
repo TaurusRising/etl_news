@@ -18,3 +18,20 @@
 * количество публикаций новостей данной категории по дням недели.
 
 В качестве базы данных был использован __PostgreSQL__. В ней хранятся данные из новостных rss-лент. Для обработки данных применялся язык __Python__. Оркестрация обработанных данных осуществлялась __Apache Airflow__. Для автоматизации создания, управления и развертывания приложения использовался __Docker__.
+
+---
+#### Запуск
+1. В корне проекта создать файл __.env__. В параметрах файла прописать креды Airflow и Postgres:
+```
+AIRFLOW_USER=airflow
+AIRFLOW_PASSWORD=airflow
+POSTGRES_HOST=host.docker.internal
+POSTGRES_PORT=5432
+POSTGRES_DB_NAME=etl_news
+POSTGRES_USER=pg_user
+POSTGRES_PASSWORD=pg_password
+```
+2. Проинициализировать Airflow командой __docker compose up airflow-init__
+3. Запустить контейнеры командой __docker compose up -d__
+
+_URL для входа в Airflow_ _http://localhost:8080_
